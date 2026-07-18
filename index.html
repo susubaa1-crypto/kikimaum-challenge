@@ -893,14 +893,14 @@
       </div>
 
       <div class="form-group">
-        <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
-          <input type="checkbox" name="리더희망" value="희망함"
-            style="width:20px; height:20px; margin-top:2px; accent-color:var(--accent); flex-shrink:0; cursor:pointer;">
-          <span style="font-size:15px; color:#ccc; line-height:1.5;">
+        <div style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;" onclick="document.getElementById('cb-leader').click()">
+          <input type="checkbox" id="cb-leader" name="리더희망" value="희망함"
+            style="width:20px !important; height:20px; margin-top:3px; accent-color:var(--accent); flex-shrink:0; cursor:pointer; background:transparent; border:2px solid #666; border-radius:4px; padding:0;">
+          <span style="font-size:15px; color:#ccc; line-height:1.6; cursor:pointer;">
             소모임 리더로 활동하고 싶어요
             <span class="q-hint">선발제이며 신청 후 별도 안내드려요.</span>
           </span>
-        </label>
+        </div>
       </div>
 
       <hr class="form-divider">
