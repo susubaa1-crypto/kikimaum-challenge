@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>에너지 관리법 챌린지 8월 | 키키맘</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --beige: #FAF7F2;
+    --warm: #F5EDE0;
+    --brown: #8B5E3C;
+    --dark: #2C2C2C;
+    --mid: #5C5C5C;
+    --light: #9B9B9B;
+    --accent: #C17E4A;
+    --green: #5A7A5C;
+  }
+
+  body {
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: var(--beige);
+    color: var(--dark);
+    line-height: 1.8;
+  }
+
+  /* ─── STICKY CTA (모바일) ─── */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--accent);
+    padding: 16px 24px;
+    text-align: center;
+  }
+  .sticky-cta a {
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  @media (max-width: 640px) {
+    .sticky-cta { display: block; }
+    body { padding-bottom: 60px; }
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    color: white;
+    padding: 72px 20px 56px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('6C5EA27B-3BE4-4C9C-862D-CA0C8E4AED5B.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    filter: brightness(0.35);
+    z-index: 0;
+  }
+
+  .hero > *:not(.hero-bg) { position: relative; z-index: 1; }
+
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    margin-bottom: 24px;
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-size: clamp(26px, 7vw, 50px);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 span { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 15px;
+    color: #aaa;
+    max-width: 340px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #777;
+    margin-top: 8px;
+  }
+
+  .hero-badge .dot {
+    width: 7px; height: 7px;
+    background: #5cb85c;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ─── SECTION BASE ─── */
+  .section-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 56px 20px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+
+  p {
+    font-size: 16px;
+    color: var(--mid);
+    margin-bottom: 16px;
+    line-height: 1.75;
+  }
+
+  /* ─── READER PAIN (첫 섹션) ─── */
+  .pain-section {
+    background: var(--dark);
+    color: white;
+  }
+
+  .pain-section p { color: #bbb; }
+
+  .pain-quote {
+    font-size: clamp(19px, 5vw, 26px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .pain-quote em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* ─── STORY ─── */
+  .story-section { background: white; }
+
+  .quote-line {
+    font-size: clamp(18px, 4.5vw, 24px);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .divider {
+    width: 36px; height: 2px;
+    background: var(--accent);
+    margin: 36px 0;
+  }
+
+  /* ─── HIGHLIGHT BOX ─── */
+  .highlight-box {
+    background: var(--warm);
+    border-left: 3px solid var(--accent);
+    padding: 20px 18px;
+    margin: 28px 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .highlight-box p {
+    margin-bottom: 0;
+    color: var(--brown);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .dark-box {
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid var(--accent);
+    padding: 20px 18px;
+    margin: 28px 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .dark-box p {
+    margin-bottom: 0;
+    color: #ddd;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ─── TURNING POINT ─── */
+  .turning-section {
+    background: var(--dark);
+  }
+  .turning-section h2 { color: white; }
+  .turning-section p { color: #bbb; }
+  .turning-section .section-label { color: var(--accent); }
+
+  /* ─── WHO THIS IS FOR ─── */
+  .for-section { background: var(--warm); }
+
+  .for-list {
+    list-style: none;
+    margin: 20px 0;
+  }
+
+  .for-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    font-size: 16px;
+    color: var(--dark);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .for-list li:last-child { border-bottom: none; }
+
+  .for-list .check { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+  /* ─── WHY COMMUNITY ─── */
+  .why-list {
+    list-style: none;
+    margin: 28px 0;
+  }
+
+  .why-list li {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+
+  .why-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .why-text strong {
+    display: block;
+    font-size: 16px;
+    color: var(--dark);
+    margin-bottom: 3px;
+  }
+
+  .why-text span {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  /* ─── DAILY FLOW ─── */
+  .flow-section { background: var(--dark); }
+  .flow-section h2 { color: white; }
+  .flow-section p { color: #bbb; }
+  .flow-section .section-label { color: var(--accent); }
+
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 28px 0;
+  }
+
+  .flow-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .flow-step:last-child { border-bottom: none; }
+
+  .flow-num {
+    width: 28px; height: 28px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .flow-text strong {
+    display: block;
+    font-size: 15px;
+    color: white;
+    margin-bottom: 2px;
+  }
+
+  .flow-text span {
+    font-size: 14px;
+    color: #888;
+  }
+
+  /* ─── CHALLENGE INFO ─── */
+  .challenge-section { background: var(--beige); }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .info-card {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .info-card .c-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--light);
+    margin-bottom: 5px;
+  }
+
+  .info-card .c-value {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  @media (max-width: 400px) {
+    .info-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── FAQ ─── */
+  .faq-section { background: white; }
+
+  .faq-item {
+    border-bottom: 1px solid #eee;
+    padding: 18px 0;
+  }
+
+  .faq-item:last-child { border-bottom: none; }
+
+  .faq-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .faq-a {
+    font-size: 15px;
+    color: var(--mid);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ─── FORM ─── */
+  .form-section {
+    background: var(--dark);
+    padding-bottom: 80px;
+  }
+
+  .form-section h2 { color: white; }
+
+  .form-desc {
+    color: #aaa;
+    font-size: 15px;
+    margin-bottom: 36px;
+  }
+
+  .form-group { margin-bottom: 24px; }
+
+  .form-group label {
+    display: block;
+    font-size: 15px;
+    color: #ccc;
+    margin-bottom: 8px;
+  }
+
+  .form-group label .q-num {
+    color: var(--accent);
+    font-weight: 700;
+    margin-right: 5px;
+  }
+
+  .form-group label .q-hint {
+    font-size: 12px;
+    color: #999;
+    display: block;
+    margin-top: 3px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 13px 15px;
+    color: white;
+    font-size: 15px;
+    font-family: inherit;
+    resize: vertical;
+    transition: border 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .form-group textarea { min-height: 90px; }
+
+  .form-group select option { background: #333; }
+
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .radio-option input[type="radio"] {
+    width: 18px; height: 18px;
+    accent-color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .radio-option span {
+    font-size: 15px;
+    color: #ccc;
+  }
+
+  .form-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 36px 0;
+  }
+
+  .privacy-note {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+    font-family: inherit;
+  }
+
+  .submit-btn:hover { opacity: 0.88; }
+  .submit-btn:disabled { opacity: 0.5; cursor: default; }
+
+  /* ─── SUCCESS ─── */
+  .success-msg {
+    display: none;
+    background: rgba(90,122,92,0.15);
+    border: 1px solid var(--green);
+    border-radius: 12px;
+    padding: 32px 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .success-msg h3 { color: #8fc490; font-size: 20px; margin-bottom: 8px; }
+  .success-msg p { color: #aaa; font-size: 15px; margin: 0; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: #1a1a1a;
+    padding: 28px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #444;
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <a href="#applyForm">8월 챌린지 신청하기 →</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">KIKIMAUM · 한시간 스터디 챌린지 8월</div>
+  <h1>
+    이번 주제:<br>
+    <span>시간 관리보다<br>에너지 관리법</span>
+  </h1>
+  <p class="hero-sub">8월 3일~10일, 줌으로 만나는<br>1주일 스터디 챌린지</p>
+  <a class="hero-cta" href="#applyForm">8월 챌린지 신청하기 →</a>
+  <div class="hero-badge">
+    <span class="dot"></span>
+    신청 접수 중 · 선발제
+  </div>
+</div>
+
+
+<!-- READER PAIN -->
+<div class="pain-section">
+  <div class="section-inner">
+    <p class="section-label">혹시 이런가요</p>
+    <div class="pain-quote">
+      오늘도 내 시간은 없었고,<br>
+      밤이 되면 <em>나만 멈춰 있는</em><br>
+      것 같은 느낌.
+    </div>
+    <p>아이 재우고 나면 기운이 없다. 유튜브 틀다가 잠든다. 내일 하지 뭐, 하다가 몇 달이 지났다.</p>
+    <p>성장하고 싶은데, 그 얘기를 할 수 있는 사람이 주변에 없다. 회사 다니는 친구는 다른 세상 같고, 엄마 친구들은 아이 얘기, 집안 얘기만 하다 온다.</p>
+    <div class="dark-box">
+      <p>그러다 보면 어느 날 문득,<br>내가 사라지는 것 같은 느낌이 든다.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- STORY: 키키맘 이야기 -->
+<div class="story-section">
+  <div style="width:100%; max-height:420px; overflow:hidden;">
+    <img src="53278D39-03D8-4F96-8CE0-979A47E8153F.jpg" alt="키키맘 공부 일상" style="width:100%; object-fit:cover; object-position:center 40%; max-height:420px; display:block;">
+  </div>
+  <div class="section-inner">
+    <p class="section-label">키키맘 이야기</p>
+
+    <div class="quote-line">
+      7년 다닌 회사를 그만두고<br>
+      카페를 차렸다.
+    </div>
+
+    <p>꿈꾸던 내 공간이었다. 근데 곧 임신을 했고, 출산 후엔 아이를 안고 있느라 매장을 제대로 운영할 수가 없었다.</p>
+    <p>매장은 적자가 났다. 결국 2억을 들인 카페를 헐값에 팔았다. 큰 손해였다.</p>
+
+    <div class="highlight-box">
+      <p>산후 우울감에,<br>사업 실패까지.<br>그때가 내 인생에서<br>제일 바닥이었다.</p>
+    </div>
+
+    <p>잠을 못 이루는 날이 계속됐다. 고통 속에서 한 가지 생각만 했다.</p>
+    <p><em style="font-style:normal; font-weight:700; color:var(--dark);">"이 한계를 깨고 싶다. 내 안의 잠재력을 찾고 싶다."</em></p>
+
+    <div class="divider"></div>
+
+    <p>그때부터 밤 11시, 잠들기 전에 식탁에 앉았다. 책을 펼쳤다. 하루 1시간.</p>
+    <p>거창한 계획이 아니었다. 그냥 그 1시간만 지키기로 했다.</p>
+
+    <div class="highlight-box">
+      <p>장담하는데,<br>그 1시간을 쌓지 않았다면<br>지금의 키키맘 7.6만은<br>없었을 거다.</p>
+    </div>
+
+    <p>1년 동안 나의 한계를 깨기 위해 공부했던 것들을 정리해서 알려드리면, 나처럼 방황하는 엄마들의 시간을 줄여줄 수 있을 거라 믿었다.</p>
+    <p>그리고 결국 중요한 건 하나였다. 나와 같은 마음으로 대화할 수 있는 친구. 그게 있어야 지속된다.</p>
+
+    <div class="highlight-box">
+      <p>아이도 잘 키우지만,<br>'나'도 잘 키우는<br>멋진 엄마들의 모임을<br>만들고 싶었다.</p>
+    </div>
+  </div>
+
+  <!-- 신뢰 숫자 -->
+  <div style="background: var(--warm); border-top: 1px solid #eee; padding: 28px 20px;">
+    <div style="max-width:600px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; text-align:center;">
+      <div>
+        <div style="font-size:22px; font-weight:800; color:var(--accent);">7.6만</div>
+        <div style="font-size:12px; color:var(--light); margin-top:4px;">인스타 팔로워</div>
+      </div>
+      <div>
+        <div style="font-size:22px; font-weight:800; color:var(--accent);">1년+</div>
+        <div style="font-size:12px; color:var(--light); margin-top:4px;">매일 밤 공부</div>
+      </div>
+      <div>
+        <div style="font-size:22px; font-weight:800; color:var(--accent);">바닥→</div>
+        <div style="font-size:12px; color:var(--light); margin-top:4px;">직접 증명한 사람</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PHOTO BREAK -->
+<div style="width:100%; max-height:380px; overflow:hidden;">
+  <img src="D16CF63A-F472-4129-BE66-7DD6975C60E7.jpg" alt="키키맘 공부 세팅" style="width:100%; object-fit:cover; object-position:center 50%; max-height:380px; display:block;">
+</div>
+
+<!-- WHO THIS IS FOR -->
+<div class="for-section">
+  <div class="section-inner">
+    <p class="section-label">이런 분과 함께해요</p>
+    <h2>아이 성장 대신,<br>나 성장에 대해<br>깊은 대화 나누고 싶은 엄마</h2>
+
+    <ul class="for-list">
+      <li><span class="check">✓</span> 좋은 사람들과 진짜 대화를 나누고 싶은 분</li>
+      <li><span class="check">✓</span> 공부 루틴을 다시 만들고 싶은데 혼자는 작심삼일인 분</li>
+      <li><span class="check">✓</span> 성장 얘기를 마음 놓고 할 수 있는 사람이 없는 분</li>
+      <li><span class="check">✓</span> 아이보다 내가 먼저 잘 자라고 싶은 분</li>
+      <li><span class="check">✓</span> 소모임 리더로 활동하고 싶은 분</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- WHY COMMUNITY -->
+<div class="story-section">
+  <div class="section-inner">
+    <p class="section-label">왜 같이인가</p>
+    <h2>좋은 어른은<br>혼자 될 수 없다</h2>
+    <img src="IMG_1274.JPG" alt="Are you getting older or deeper?" style="width:100%; max-width:360px; display:block; margin: 0 auto 24px; border-radius:8px; opacity:0.9;">
+
+    <ul class="why-list">
+      <li>
+        <div class="why-num">1</div>
+        <div class="why-text">
+          <strong>환경이 사람을 바꾼다</strong>
+          <span>의지로 버티는 건 한계가 있다. 같이 하는 사람이 있으면, 안 해도 되는 이유보다 해야 하는 이유가 강해진다.</span>
+        </div>
+      </li>
+      <li>
+        <div class="why-num">2</div>
+        <div class="why-text">
+          <strong>진짜 해낸 사람 옆에 있는 것의 힘</strong>
+          <span>동기부여 영상은 감동을 주지만, 실제로 해낸 사람의 존재는 "나도 할 수 있다"를 믿게 한다.</span>
+        </div>
+      </li>
+      <li>
+        <div class="why-num">3</div>
+        <div class="why-text">
+          <strong>성장 이야기를 나눌 친구가 생긴다</strong>
+          <span>허망한 대화 말고, 내가 진짜 하고 싶은 이야기를 할 수 있는 사람들과 연결된다.</span>
+        </div>
+      </li>
+      <li>
+        <div class="why-num">4</div>
+        <div class="why-text">
+          <strong>7일이 지나면 습관이 된다</strong>
+          <span>1시간 공부가 "특별한 일"이 아니라 "그냥 내 일상"이 된다.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- DAILY FLOW -->
+<div class="flow-section">
+  <div class="section-inner">
+    <p class="section-label">운영 방식</p>
+    <h2>일방적으로 듣는 게 아니라<br>함께 소통하는 공간이에요</h2>
+    <p>줌은 시작일(8/3)과 마무리일(8/10) 월요일 밤 10시, 딱 2번이에요. 카메라는 무조건 켜야 해요. 서로 얼굴 보고, 말하고, 나누는 게 이 챌린지의 핵심이에요.</p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-text">
+          <strong>8월 3일 (일) 밤 10시 — 시작 강의 (줌)</strong>
+          <span>에너지 관리법 첫 강의 + 조별 모임 배정</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-text">
+          <strong>8월 3일~10일 — 하루 1시간 실천</strong>
+          <span>단톡방 선언 → 1시간 집중 → 인증 한 줄</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-text">
+          <strong>중간 — 조별 소모임</strong>
+          <span>소그룹으로 깊게 나누는 시간</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-text">
+          <strong>8월 10일 (일) 밤 10시 — 마무리 강의 (줌)</strong>
+          <span>1주일 리뷰 + 다음 챌린지 안내</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-text">
+          <strong>온라인 완주자 대상 — 오프라인 모임 (2시간)</strong>
+          <span>직접 만나는 소모임. 별도 일정 안내 예정</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PHOTO BREAK -->
+<div style="width:100%; max-height:340px; overflow:hidden;">
+  <img src="IMG_1421.jpeg" alt="1시간 공부 세팅 - 타이머, 책, 노트" style="width:100%; object-fit:cover; object-position:center 60%; max-height:340px; display:block;">
+</div>
+
+<!-- CHALLENGE INFO -->
+<div class="challenge-section">
+  <div class="section-inner">
+    <p class="section-label">챌린지 안내</p>
+    <h2>한시간 스터디 챌린지<br><span style="color:var(--accent); font-size:0.85em;">8월 : 에너지 관리법</span></h2>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="c-label">기간</div>
+        <div class="c-value">8/3 ~ 8/10</div>
+      </div>
+      <div class="info-card">
+        <div class="c-label">하루 실천</div>
+        <div class="c-value">딱 1시간</div>
+      </div>
+      <div class="info-card">
+        <div class="c-label">형태</div>
+        <div class="c-value">줌 월요일 2회<br><span style="font-size:13px; font-weight:400; color:var(--light);">카메라 필수</span></div>
+      </div>
+      <div class="info-card">
+        <div class="c-label">소모임</div>
+        <div class="c-value">조별 모임 있음</div>
+      </div>
+      <div class="info-card">
+        <div class="c-label">참가비</div>
+        <div class="c-value">100,000원</div>
+      </div>
+      <div class="info-card">
+        <div class="c-label">합격자 발표</div>
+        <div class="c-value">7월 26일</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="background: white; margin-top: 8px;">
+      <p style="color: var(--brown);">
+        매달 다른 주제로 열려요.<br>
+        이번 달 주제는 <strong>시간 관리보다 에너지 관리법</strong>.<br><br>
+        온라인 완주자는 <strong>오프라인 2시간 모임</strong>에 초대됩니다.<br>
+        소모임 리더를 맡고 싶은 분도 신청 가능해요.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="section-inner">
+    <p class="section-label">자주 묻는 것들</p>
+    <h2>이런 게 궁금하셨죠?</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">줌 카메라를 꼭 켜야 하나요?</div>
+      <p class="faq-a">네, 필수예요. 얼굴 보고 이야기 나누는 게 이 챌린지의 핵심이에요. 서로 보이지 않으면 소통이 안 돼요.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">선착순이 아니면 어떻게 선발되나요?</div>
+      <p class="faq-a">신청서를 읽고 함께 성장하기 좋은 분들로 선발해요. 진심이 담긴 신청서가 기준이에요. 합격자 발표는 7월 26일입니다.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">소모임 리더는 누구나 할 수 있나요?</div>
+      <p class="faq-a">신청은 누구나 가능해요. 신청서에서 리더 희망 여부를 체크해주세요. 선발 후 따로 안내드려요.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">아이 때문에 중간에 끊기면요?</div>
+      <p class="faq-a">그래도 됩니다. 30분 하다 끊기고 나머지 30분 채워도 돼요. 완벽하게 하려다 안 하는 것보다 낫습니다.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">오프라인 모임은 어디서 하나요?</div>
+      <p class="faq-a">온라인 완주자 대상으로 별도 안내드릴 예정이에요. 지역과 인원에 따라 장소가 정해져요.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- FORM -->
+<div class="form-section" id="applyForm">
+  <div class="section-inner">
+    <p class="section-label" style="color: var(--accent);">신청하기</p>
+    <h2>같이 할 사람,<br>지금 신청하세요</h2>
+    <p class="form-desc">신청 전에 몇 가지 여쭤볼게요.<br>솔직하게 적을수록, 더 잘 도와드릴 수 있어요.</p>
+
+    <form id="challengeForm" novalidate>
+
+      <!-- 기본 정보 -->
+      <div class="form-group">
+        <label for="f-name">이름</label>
+        <input id="f-name" type="text" name="이름" placeholder="홍길동" autocomplete="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="f-phone">
+          연락처
+          <span class="q-hint">챌린지 안내 문자를 보내드려요</span>
+        </label>
+        <input id="f-phone" type="tel" name="연락처" placeholder="010-0000-0000" autocomplete="tel" inputmode="tel" required>
+      </div>
+
+      <div class="form-group">
+        <label for="f-age">아이 나이 <span style="color:#666; font-size:12px;">(선택)</span></label>
+        <input id="f-age" type="text" name="아이나이" placeholder="예) 14개월, 3살, 아직 없음">
+      </div>
+
+      <div class="form-group">
+        <label for="f-study">챌린지 기간 중 공부할 주제는 정해졌나요?</label>
+        <select id="f-study" name="공부주제">
+          <option value="">선택해주세요</option>
+          <option>책 읽기</option>
+          <option>영어</option>
+          <option>자격증</option>
+          <option>사업 공부</option>
+          <option>아직 미정</option>
+          <option>기타</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>소모임 리더를 희망하시나요?
+          <span class="q-hint">선발제이며 신청 후 별도 안내드려요.</span>
+        </label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="리더희망" value="희망함">
+            <span>네, 리더로 활동하고 싶어요</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="리더희망" value="희망안함" checked>
+            <span>아니요, 참여자로만 함께할게요</span>
+          </label>
+        </div>
+      </div>
+
+      <hr class="form-divider">
+
+      <!-- 심리 설문 -->
+      <div class="form-group">
+        <label for="q1">
+          <span class="q-num">Q1.</span>
+          지금 공부나 성장과 관련해서 가장 마음에 걸리는 게 뭔가요?
+          <span class="q-hint">솔직하게 적어주세요. 틀린 답 없어요.</span>
+        </label>
+        <textarea id="q1" name="고통" placeholder="예) 배워야 한다는 건 아는데 맨날 넷플릭스 켜고 있어요..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q2">
+          <span class="q-num">Q2.</span>
+          하루 중 현실적으로 1시간을 낼 수 있는 시간대는 언제인가요?
+          <span class="q-hint">여러 개도 괜찮아요.</span>
+        </label>
+        <textarea id="q2" name="가능시간" placeholder="예) 아이 낮잠 시간 / 밤 10시 이후 / 새벽 5시 / 출퇴근 시간..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q3">
+          <span class="q-num">Q3.</span>
+          이 상태가 1년 뒤에도 똑같이 반복된다면, 뭘 잃게 될 것 같아요?
+          <span class="q-hint">시간, 기회, 자신감, 관계... 뭐든요.</span>
+        </label>
+        <textarea id="q3" name="손실" placeholder="솔직하게 써주세요." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q4">
+          <span class="q-num">Q4.</span>
+          하루 딱 1시간을 온전히 나를 위해 쓴다면, 어떤 내가 되어 있을 것 같아요?
+          <span class="q-hint">상상해서 적어주세요.</span>
+        </label>
+        <textarea id="q4" name="이상적모습" placeholder="예) 뭔가 하나씩 쌓이는 느낌, 더 자신있는 나..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q5">
+          <span class="q-num">Q5.</span>
+          함께하는 사람들에게 어떤 도움을 받고 싶나요?
+          <span class="q-hint">부담 없이 솔직하게.</span>
+        </label>
+        <textarea id="q5" name="원하는것" placeholder="예) 같이 공부하는 사람들이 생겼으면 해요 / 서로 응원하는 분위기가 좋겠어요"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span class="q-num">Q6.</span>
+          7일 동안 하루 1시간, 인증할 수 있나요?
+        </label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="약속" value="네, 할 수 있어요" required>
+            <span>네, 할 수 있어요</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="약속" value="시간 조율이 필요해요">
+            <span>시간 조율이 필요해요 (그래도 신청할게요)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="q7">
+          <span class="q-num">Q7.</span>
+          지금 신청하는 나에게 한마디 해주세요.
+        </label>
+        <textarea id="q7" name="한마디" placeholder="예) 이번엔 진짜 해보자." required></textarea>
+      </div>
+
+      <p class="privacy-note">연락처는 챌린지 안내 외 용도로 사용하지 않습니다.</p>
+
+      <button type="submit" class="submit-btn" id="submitBtn">신청 완료하기 →</button>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      <h3>신청이 완료되었습니다</h3>
+      <p>곧 안내 문자를 보내드릴게요.<br>같이 해봐요 :)</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="footer">
+  © 2026 키키맘 · susubaa1@gmail.com
+</div>
+
+
+<script>
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbzNzgRk5cSKNPT9U0b-4qds5accDiWhKzVTUqW-mJyH7RRquw8jWftEX5Ay6Dkgb8Os/exec';
+
+  document.getElementById('challengeForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submitBtn');
+
+    // 유효성 검사
+    const name  = this.querySelector('[name="이름"]').value.trim();
+    const phone = this.querySelector('[name="연락처"]').value.trim();
+    const q1    = this.querySelector('[name="고통"]').value.trim();
+    const q3    = this.querySelector('[name="손실"]').value.trim();
+    const q4    = this.querySelector('[name="이상적모습"]').value.trim();
+    const q7    = this.querySelector('[name="한마디"]').value.trim();
+    const 약속   = this.querySelector('[name="약속"]:checked');
+
+    if (!name || !phone || !q1 || !q3 || !q4 || !q7 || !약속) {
+      alert('필수 항목을 모두 작성해주세요.');
+      return;
+    }
+
+    btn.textContent = '제출 중...';
+    btn.disabled = true;
+
+    const formData = new FormData(this);
+    const payload = {};
+    formData.forEach((v, k) => { payload[k] = v; });
+    payload['created_at'] = new Date().toISOString();
+    payload['source'] = '한시간스터디챌린지';
+
+    try {
+      if (GAS_URL !== 'YOUR_GAS_WEB_APP_URL') {
+        await fetch(GAS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: payload }),
+        });
+      } else {
+        // 개발 중: GAS URL 미설정 상태에서는 콘솔에만 출력
+        console.log('신청 데이터 (GAS 미연결):', payload);
+      }
+
+      this.style.display = 'none';
+      const msg = document.getElementById('successMsg');
+      msg.style.display = 'block';
+      msg.scrollIntoView({ behavior: 'smooth' });
+
+    } catch (err) {
+      btn.textContent = '신청 완료하기 →';
+      btn.disabled = false;
+      alert('오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    }
+  });
+</script>
+
+</body>
+</html>
