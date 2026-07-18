@@ -893,19 +893,14 @@
       </div>
 
       <div class="form-group">
-        <label>소모임 리더를 희망하시나요?
-          <span class="q-hint">선발제이며 신청 후 별도 안내드려요.</span>
+        <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+          <input type="checkbox" name="리더희망" value="희망함"
+            style="width:20px; height:20px; margin-top:2px; accent-color:var(--accent); flex-shrink:0; cursor:pointer;">
+          <span style="font-size:15px; color:#ccc; line-height:1.5;">
+            소모임 리더로 활동하고 싶어요
+            <span class="q-hint">선발제이며 신청 후 별도 안내드려요.</span>
+          </span>
         </label>
-        <div class="radio-group">
-          <label class="radio-option">
-            <input type="radio" name="리더희망" value="희망함">
-            <span>네, 리더로 활동하고 싶어요</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="리더희망" value="희망안함" checked>
-            <span>아니요, 참여자로만 함께할게요</span>
-          </label>
-        </div>
       </div>
 
       <hr class="form-divider">
@@ -1027,6 +1022,8 @@
     const formData = new FormData(this);
     const payload = {};
     formData.forEach((v, k) => { payload[k] = v; });
+    // 체크박스 미체크 시 빈값으로
+    if (!payload['리더희망']) payload['리더희망'] = '희망안함';
     payload['created_at'] = new Date().toISOString();
     payload['source'] = '한시간스터디챌린지';
 
